@@ -46,7 +46,7 @@
         <span>{{(item.count * item.price).toFixed(2)}}</span>元
       </div>
       <div class="commodity-del">
-        <span>X</span>
+        <span @click="delCommodity(index)">X</span>
       </div>
     </div>
   </div>
@@ -106,6 +106,10 @@ export default {
           this.$emit('changeAllChosenBtnStatus', this.isAllChosen)
         }
       })     
+    },
+    // 删除商品
+    delCommodity(index) {
+      this.cartList.splice(index, 1)
     }
   },
   computed: {
@@ -256,6 +260,10 @@ export default {
 
   .commodity-del {
     cursor: pointer;
+
+    span {
+      padding: 20px;
+    }
   }
 }
 </style>
